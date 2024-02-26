@@ -9,7 +9,20 @@ export class AuthService {
         return await this.userService.create(userData);
 
     }
-}
-  
 
+    async login(userLogin) {
+        try {
+            const user = await this.userService.findOneUserByEmail(userLogin.email);
+            if (user) {
+                if (user.password === userLogin.password) {
+                    return user;
+                }
+            }
+            return "Неверные данные для входа";
+        } catch (error) {
+            return error.message;
+        }
+        
+    }
 
+}    

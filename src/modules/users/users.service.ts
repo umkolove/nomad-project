@@ -10,7 +10,22 @@ export class UsersService extends CrudService<UserDocument> {
     super(userRepository);
   }
 
-  async create(createUserDto: CreateUserDto) {
-    return await this.userRepository.create(createUserDto);
+  async create(createUserDto: CreateUserDto): Promise<UserDocument> {
+    try {
+      return await this.userRepository.create(createUserDto);
+    } catch (error) {
+      return error.message;
+    }
+    
   }
+  async findOneUserByEmail(email: string) {
+    try {
+      return await this.userRepository.findOne({email})
+    } catch (error) {
+      
+    }
+  }
+
 }
+
+

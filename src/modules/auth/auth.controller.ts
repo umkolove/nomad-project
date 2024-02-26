@@ -12,4 +12,8 @@ import { CreateUserDto } from './dto/create-user-dto';
         return await this.authService.signup(userData);
 
     }
+    @Post('login')
+    async login(@Body()userLogin) {
+      return await this.authService.login(userLogin);
+    }
   }
