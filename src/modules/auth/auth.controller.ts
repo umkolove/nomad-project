@@ -7,11 +7,11 @@ import { CreateUserDto } from './dto/create-user-dto';
   export class AuthController {
     constructor(private readonly authService: AuthService) {}
 
-    @Post('signup')
-    async signUp(@Body()userData: CreateUserDto): Promise<UserDocument> {
-        return await this.authService.signup(userData);
+    // @Post('signup')
+    // async signUp(@Body()userData: CreateUserDto): Promise<UserDocument> {
+    //     return await this.authService.signup(userData);
 
-    }
+    // }
     @Post('login')
     async login(@Body()userLogin) {
       return await this.authService.login(userLogin);
